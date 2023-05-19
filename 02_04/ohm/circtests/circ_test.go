@@ -1,4 +1,4 @@
-package circuittests
+package circtests
 
 import (
 	"chapter2/ohm/current"
