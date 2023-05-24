@@ -5,7 +5,9 @@ import (
 	"chapter2/ohm/power"
 	"chapter2/ohm/resist"
 	"chapter2/ohm/volt"
-	"math"
+	"github.com/google/go-cmp/cmp"
+	"github.com/google/go-cmp/cmp/cmpopts"
+
 	"testing"
 )
 
@@ -35,7 +37,7 @@ func TestResistanceEq(t *testing.T) {
 
 	for _, test := range tests {
 		req := resist.Rpara(test.r...)
-		if math.Abs(req-test.eq) > 1.0 {
+		if !cmp.Equal(req, test.eq, cmpopts.EquateApprox(0.0, 0.99)) {
 			t.Errorf("expecting resistance equivalance: %f, got: %f", test.eq, req)
 		}
 	}
@@ -63,7 +65,7 @@ func TestVolt(t *testing.T) {
 
 	for _, test := range tests {
 		volt := volt.Vir(test.i, resist.Rser(test.r...))
-		if math.Abs(volt-test.v) > 1.0 {
+		if !cmp.Equal(volt, test.v, cmpopts.EquateApprox(0.0, 0.99)) {
 			t.Errorf("expecting voltage: %f, got: %f", test.v, volt)
 		}
 	}
@@ -97,7 +99,7 @@ func TestCurrent(t *testing.T) {
 
 	for _, test := range tests {
 		current := current.Ivr(test.v, resist.Rpara(test.r...))
-		if math.Abs(current-test.i) > 1.0 {
+		if !cmp.Equal(current, test.i, cmpopts.EquateApprox(0.0, 0.99)) {
 			t.Errorf("expecting current: %f, got: %f", test.i, current)
 		}
 	}
@@ -125,8 +127,9 @@ func TestPowerRpara(t *testing.T) {
 
 	for _, test := range tests {
 		power := power.Piv(test.i, volt.Vir(test.i, resist.Rser(test.r...)))
-		if math.Abs(power-test.p) > 1.0 {
+		if !cmp.Equal(power, test.p, cmpopts.EquateApprox(0.0, 0.99)) {
 			t.Errorf("expecting power: %f, got: %f", test.p, power)
 		}
+
 	}
 }
