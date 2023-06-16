@@ -10,14 +10,14 @@ import (
 	"chapter2/ohm/volt"
 )
 
-type Data struct {
+type telemetry struct {
 	I float64   `json:"i"`
 	R []float64 `json:"r"`
 }
 
 func main() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		var data Data
+		var data telemetry
 		if err := json.NewDecoder(r.Body).Decode(&data); err != nil {
 			w.WriteHeader(http.StatusBadRequest)
 			fmt.Fprintf(w, "Error decoding data: %v", err)
