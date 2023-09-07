@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"net/http"
 
-	"chapter2/ohm/power"
-	"chapter2/ohm/resist"
-	"chapter2/ohm/volt"
+	"github.com/vladimirvivien/lil-om/power"
+	"github.com/vladimirvivien/lil-om/resist"
+	"github.com/vladimirvivien/lil-om/volt"
 )
 
 type telemetry struct {
