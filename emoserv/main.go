@@ -5,7 +5,7 @@ import (
 	"log"
 	"net/http"
 
-	"lil/emoserv/search"
+	"lil/emojiis/search"
 )
 
 func main() {
