@@ -22,7 +22,19 @@ emojis := search.ByDescription(search.Params{
 ```
 
 Returns:
-
 ```
 []string{"🐵", "🐶", "🐱", "🐯", "🦊"}
 ```
+
+Or, search by tags only:
+
+```go
+emojis := search.ByTags("fruits")
+```
+
+Returns:
+```go
+[]string{"🍇", "🍈", "🍉", "🍊", "🍋"}
+```
+
+

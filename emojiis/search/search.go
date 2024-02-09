@@ -30,8 +30,18 @@ func ByDescription(params Params) (result []Emoji) {
 	return
 }
 
-// version 0.1.0
-// func Like(emoji string) (result []emoji) {...}
+// ByTags search for emojis with specified tags
+func ByTags(tags ...string) (result []Emoji) {
+	for _, emo := range emojis {
+		for _, tag := range tags {
+			if slices.Contains(emo.Tags, tag) {
+				result = append(result, emo)
+			}
+		}
+	}
+
+	return
+}
 
 // shouldExclude checks emoji tags and labels for exclusions
 func shouldExclude(emo Emoji, excludes []string) bool {
