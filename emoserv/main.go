@@ -43,6 +43,23 @@ func main() {
 		}
 	})
 
+	http.HandleFunc("/search/like", func(w http.ResponseWriter, r *http.Request) {
+		var emoji string
+		if err := json.NewDecoder(r.Body).Decode(&emoji); err != nil {
+			http.Error(w, err.Error(), http.StatusBadRequest)
+			return
+		}
+		log.Printf("Got request: %#v", emoji)
+
+		// write result
+		w.Header().Set("Content-Type", "application/json")
+		result := search.EmojiLike(emoji)
+		if err := json.NewEncoder(w).Encode(&result); err != nil {
+			w.WriteHeader(http.StatusInternalServerError)
+			return
+		}
+	})
+
 	log.Print("Listening on port 8080")
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }

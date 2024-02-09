@@ -40,7 +40,7 @@ func TestByDesc(t *testing.T) {
 	}
 }
 
-func TestTag(t *testing.T) {
+func TestByTags(t *testing.T) {
 	tests := map[string]struct {
 		tags []string
 		want []string
@@ -58,6 +58,33 @@ func TestTag(t *testing.T) {
 	for name, test := range tests {
 		t.Run(name, func(t *testing.T) {
 			result := ByTags(test.tags...)
+			if len(result) != len(test.want) {
+				t.Errorf("Search ByDescription: want %d emojis, got %d", len(test.want), len(result))
+			}
+
+			for _, emoji := range result {
+				if !slices.Contains(test.want, emoji.Emoji) {
+					t.Errorf("Search ByDescription: expected %s to be in %#v", emoji, test.want)
+				}
+			}
+		})
+	}
+}
+
+func TestEmojiLike(t *testing.T) {
+	tests := map[string]struct {
+		emoji string
+		want   []string
+	}{
+		"fruit": {
+			"🍇",
+			[]string{"🍇", "🍈", "🍉", "🍊", "🍋"},
+		},
+	}
+
+	for name, test := range tests {
+		t.Run(name, func(t *testing.T) {
+			result := EmojiLike(test.emoji)
 			if len(result) != len(test.want) {
 				t.Errorf("Search ByDescription: want %d emojis, got %d", len(test.want), len(result))
 			}

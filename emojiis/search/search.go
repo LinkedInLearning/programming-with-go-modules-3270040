@@ -43,6 +43,30 @@ func ByTags(tags ...string) (result []Emoji) {
 	return
 }
 
+// EmojiLike searches for emojis that are like
+// the specified emoji icon
+func EmojiLike(emoji string) (result []Emoji) {
+	// find the emoji
+	var found Emoji
+	for _, emo := range emojis {
+		if emo.Emoji == emoji {
+			found = emo
+			break
+		}
+	}
+
+	if found.Emoji == "" {
+		return
+	}
+
+	// find emoji with similar traits
+	var includes []string
+	includes = append(includes, found.Tags...)
+	includes = append(includes, found.Label)
+
+	return ByDescription(Params{Include: includes})
+}
+
 // shouldExclude checks emoji tags and labels for exclusions
 func shouldExclude(emo Emoji, excludes []string) bool {
 	for _, exclude := range excludes {
