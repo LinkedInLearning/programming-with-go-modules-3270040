@@ -4,6 +4,16 @@
 
 Emojiis is a Go module that exposes a programmatic API to search and retrieve emoji icons using descriptive terms.
 
+## Version 1.0.0 released
+
+This is the first stable version of the module. This version includes
+
+Ability to search emojiis
+Support for inclusion and exclusion search terms
+Ability to search by emoji tags
+
+ See our API [documentation](https://pkg.go.dev/github.com/vladimirvivien/emojiis)
+
 ## Installation
 To get started with the module, use the `go get` command to pull down the packages:
 
