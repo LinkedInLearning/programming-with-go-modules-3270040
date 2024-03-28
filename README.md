@@ -1,7 +1,12 @@
 # Programming with Go Modules
 This is the repository for the LinkedIn Learning course `Programming with Go Modules`. The full course is available from [LinkedIn Learning][lil-course-url].
 
+![lil-thumbnail-url]
+
+While modules are crucial to how Go programs are built, it’s difficult to find a comprehensive overview that gives the subject its proper due. In this course, designed uniquely for intermediate programmers looking to further their understanding of the Go module system, instructor Vladimir Vivien shows you the fundamental skills and technical know-how required to start developing and publishing Go modules on your own. Along the way, learn how to reuse module packages, publish modules, release versioned modules, and more. By the end of this course, you’ll be ready to take your Go skills to the next level and boost your programming career.
+
 _See the readme file in the main branch for updated instructions and information._
+
 ## Instructions
 This repository has branches for each of the videos in the course. You can use the branch pop up menu in github to switch to a specific branch and take a look at the course at that stage, or you can add `/tree/BRANCH_NAME` to the URL to go to the branch you want to access.
 
@@ -20,15 +25,18 @@ To resolve this issue:
     Add changes to git using this command: git add .
 	Commit changes using this command: git commit -m "some message"
 
-## Installing
-1. To use these exercise files, you must have the following installed:
-	- [list of requirements for course]
-2. Clone this repository into your local machine using the terminal (Mac), CMD (Windows), or a GUI tool like SourceTree.
-3. [Course-specific instructions]
+### Instructor
 
+Vladimir Vivien
+
+Go Programming Author | Kubernetes Contributor | Cloud-Native Developer
+
+                            
+
+Check out my other courses on [LinkedIn Learning](https://www.linkedin.com/learning/instructors/vladimir-vivien?u=104).
 
 [0]: # (Replace these placeholder URLs with actual course URLs)
 
-[lil-course-url]: https://www.linkedin.com/learning/
-[lil-thumbnail-url]: http://
+[lil-course-url]: https://www.linkedin.com/learning/programming-with-go-modules
+[lil-thumbnail-url]: https://media.licdn.com/dms/image/D560DAQGiqeqdRWuGJQ/learning-public-crop_675_1200/0/1710974428166?e=2147483647&v=beta&t=ghyyrew4zzGJNPlZngSte62JtVQzGtClWG54HnY0nZI
 
